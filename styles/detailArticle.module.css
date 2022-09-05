@@ -3,7 +3,7 @@
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
-    max-width: 1500px;
+    max-width: 1200px;
     margin-top: 3rem;
 }
 
@@ -22,11 +22,11 @@
 .card:hover,
 .card:focus,
 .card:active {
-    color: #0070f3;
+    color: black;
     border-color: #0070f3;
 }
 
-.card h3 {
+.card h2 {
     margin: 0 0 1rem 0;
     font-size: 1.5rem;
 }
@@ -37,13 +37,11 @@
     line-height: 1.5;
 }
 
-.logo {
-    height: 1em;
+.button {
+    color: black;
+    text-align: right;
 }
 
-@media (max-width: 600px) {
-    .grid {
-        width: 100%;
-        flex-direction: column;
-    }
+.button:hover {
+    color: red;
 }

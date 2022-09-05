@@ -6,7 +6,7 @@ const about = () => {
       <Head>
         <title> About </title>
       </Head>
-      <h1>Made by Racoen Team</h1>
+      <h3>Made by Racoen Team 2022</h3>
     </div>
   );
 };
