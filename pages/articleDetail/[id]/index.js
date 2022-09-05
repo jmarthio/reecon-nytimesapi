@@ -1,42 +1,41 @@
+import { useState } from "react";
 import Link from "next/link";
+import { useEffect } from "react";
+import Image from "next/image";
+import { useRouter } from "next/router";
 
 const articleDetail = () => {
+  const router = useRouter();
+  const [detail, setDetail] = useState({});
+
+  useEffect(() => {
+    let selectedArticle = localStorage.getItem("selectedArticle");
+    selectedArticle = JSON.parse(selectedArticle);
+
+    setDetail(selectedArticle.article);
+  }, []);
+
+  if (!detail.id) {
+    return null;
+  }
+
+  if (router.query.id && router.query.id !== `${detail.id}`) {
+    router.replace("/");
+  }
+
   return (
     <div>
-      <p>Hai</p>
+      <Image
+        src={detail.media[0]["media-metadata"][2].url}
+        width={detail.media[0]["media-metadata"][2].width}
+        height={detail.media[0]["media-metadata"][2].height}
+      />
+      <h3>{detail.title}</h3>
+      <p>{detail.abstract}</p>
       <br />
       <Link href="/"> Go Back </Link>
     </div>
   );
 };
-
-// export const getStaticPaths = async () => {
-//   const res = await fetch(
-//     "https://api.nytimes.com/svc/mostpopular/v2/emailed/7.json?api-key=3AzuoHqIA5CJixL6DxwrwQbgYNpVo1Su"
-//   );
-//   const data = await res.json();
-
-//   const paths = data.results.map((detail) => {
-//     return {
-//       params: { id: detail.id.toString() },
-//     };
-//   });
-
-//   return {
-//     paths: paths,
-//     fallback: false,
-//   };
-// };
-
-// export const getServerSideProps = async (context) => {
-//   const res = await fetch(
-//     `https://api.nytimes.com/svc/mostpopular/v2/emailed/7.json?api-key=3AzuoHqIA5CJixL6DxwrwQbgYNpVo1Su/${context.params.id}`
-//   );
-//   const article = await res.json();
-
-//   return {
-//     props: { article },
-//   };
-// };
 
 export default articleDetail;

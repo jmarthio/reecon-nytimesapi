@@ -4,7 +4,6 @@ import NewsArticle from "../components/NewsArticle";
 import styles from "../styles/Layout.module.css";
 
 export default function Home({ newsArticle }) {
-  // console.log(newsArticle.results);
   return (
     <div className={styles.container}>
       <Head>
