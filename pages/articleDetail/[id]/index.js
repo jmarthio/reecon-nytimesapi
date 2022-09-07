@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import detailArticle from "../../../styles/detailArticle.module.css";
+import { Card, Grid } from "@mui/material";
 
 const articleDetail = () => {
   const router = useRouter();
@@ -26,13 +27,13 @@ const articleDetail = () => {
 
   return (
     <div>
-      <div className={detailArticle.grid}>
+      <Grid className={detailArticle.grid}>
         <Image
           src={detail.media[0]["media-metadata"][2].url}
           width={detail.media[0]["media-metadata"][2].width}
           height={detail.media[0]["media-metadata"][2].height}
         />
-        <div className={detailArticle.card}>
+        <Card sx={{ maxWidth: 700 }} className={detailArticle.card}>
           <h2>{detail.title}</h2>
           <p>{detail.abstract}</p>
           <br />
@@ -43,8 +44,8 @@ const articleDetail = () => {
           <div className={detailArticle.button}>
             <Link href="/"> Go Back </Link>
           </div>
-        </div>
-      </div>
+        </Card>
+      </Grid>
     </div>
   );
 };
